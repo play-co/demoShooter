@@ -17,7 +17,7 @@
  */
 
 exports.noMusic = true;
-exports.noSound = true;
+exports.noSound = false;
 
 // Collision
 exports.showCollision = false;
@@ -38,7 +38,7 @@ exports.startRapidFire = 0;
 exports.startShields = 0;
 
 // Equip
-exports.MAX_DRAG_TIME = 500;
+exports.MAX_DRAG_TIME = 300;
 
 // Enemies
 exports.alwaysLargeDish = false;
