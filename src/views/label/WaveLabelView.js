@@ -50,6 +50,7 @@ exports = Class(View, function (supr) {
 		});
 
 		this._dt = 0;
+		this._count = 4;
 	};
 
 	this.reset = function () {

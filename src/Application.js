@@ -22,6 +22,7 @@ import ui.ImageView as ImageView;
 
 import menus.views.MenuView as MenuView;
 import menus.views.TextDialogView as TextDialogView;
+import menus.views.DocumentView as DocumentView;
 
 import .constants.gameConstants as gameConstants;
 import .constants.debugConstants as debugConstants;
@@ -30,6 +31,8 @@ import .constants.menuConstants as menuConstants;
 import .Game;
 
 import shooter.views.EntitySpriteView as EntitySpriteView;
+
+import src.doc.docPickups as docPickups;
 
 exports = Class(GC.Application, function (opts) {
 	this.baseWidth = 0;
@@ -60,12 +63,53 @@ exports = Class(GC.Application, function (opts) {
 			height: this.baseHeight
 		}).on('Quit', bind(this, 'onMainMenu'));
 
+		this._alienEquipementView = new DocumentView({
+			superview: this,
+			title: 'Alien equipment',
+			style: {
+				text: {
+					fontFamily: 'BPReplay',
+					size: 28,
+					color: '#000044',
+					align: 'center'
+				}
+			},
+			items: [
+				{
+					type: 'prev',
+					title: '<',
+					width: 80,
+					style: 'GREEN',
+					padding: [0, 0, 12, 0]
+				},
+				{
+					type: 'info',
+					width: 60,
+					color: '#000000',
+					fontFamily: 'BPReplay',
+					size: 32
+				},
+				{
+					type: 'next',
+					title: '>',
+					width: 80,
+					style: 'GREEN',
+					padding: [0, 0, 12, 0]
+				}
+			],
+			pages: docPickups,
+			backCB: bind(this, 'onMainMenu'),
+			showTransitionMethod: menuConstants.transitionMethod.SCALE,
+			hideTransitionMethod: menuConstants.transitionMethod.SCALE
+		});
+
 		this._mainMenu = new MenuView({
 			superview: this,
 			title: 'Main menu',
 			modal: true,
 			items: [
 				{item: 'New game', action: bind(this, 'onLaunchGame')},
+				{item: 'Alien equipment', action: bind(this._alienEquipementView, 'show')},
 				{item: 'About this game', action: bind(this, 'onAbout')}
 			],
 			showTransitionMethod: menuConstants.transitionMethod.SCALE,
