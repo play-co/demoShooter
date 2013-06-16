@@ -123,6 +123,7 @@ exports = Class(Game, function (supr) {
 		this._playerModel.
 			on('Update', bind(playerView, 'onUpdate')).
 			on('Changed', bind(this._worldView, 'onUpdateStatus')).
+			on('Quit', bind(playerView, 'onQuit')).
 			on('Dead', bind(playerView, 'onDead')).
 			on('GameOver', bind(this, 'onGameOver')).
 			on('GameOver', bind(playerView, 'onGameOver')).
@@ -301,6 +302,7 @@ exports = Class(Game, function (supr) {
 
 	this.onQuit = function () {
 		this._paused = true;
+		this._playerModel.onQuit();
 
 		soundManager.stopAllSounds();
 		this.emit('Quit');

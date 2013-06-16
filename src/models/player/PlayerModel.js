@@ -126,6 +126,7 @@ exports = Class(ActorModel, function (supr) {
 	};
 
 	this.onQuit = function () {
+		this.emit('Quit');
 	};
 
 	this.onClick = function (pt) {
