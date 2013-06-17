@@ -119,6 +119,8 @@ exports = Class(EntitySpriteView, function (supr) {
 
 	this.onQuit = function () {
 		this._playerView.stopAnimation();
+		this._shieldView.stopAnimation();
+		this._laserView.style.visible = false;
 	};
 
 	this.resume = function () {
