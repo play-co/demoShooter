@@ -92,7 +92,7 @@ exports = Class(EntityModel, function (supr) {
 		if (opts.pos.x < GC.app.baseWidth * 0.5) {
 			opts.velocity.x = Math.abs(opts.velocity.x);
 		} else {
-			opts.velocity.x = -Math.abs(opts.velocity.x);			
+			opts.velocity.x = -Math.abs(opts.velocity.x);
 		}
 
 		this._lifetimeDT = 0;
@@ -108,7 +108,7 @@ exports = Class(EntityModel, function (supr) {
 			this._mode = modes.EJECT;
 			soundManager.play('eject');
 		} else {
-			this._mode = modes.PARACHUTE;			
+			this._mode = modes.PARACHUTE;
 		}
 	};
 
@@ -224,4 +224,8 @@ exports = Class(EntityModel, function (supr) {
 			this._laserDT -= dt;
 		}
 	};
+
+	this.getHealth = function(){
+   		return this._health;
+   };
 });
