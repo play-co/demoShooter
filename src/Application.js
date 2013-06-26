@@ -44,6 +44,7 @@ exports = Class(GC.Application, function (opts) {
 			keyListenerEnabled: false,
 			logsEnabled: true,
 			noTimestep: false,
+			noReflow: true,
 			showFPS: false,
 			resizeRootView: false,
 			preload: ['resources/images', 'resources/audio']
